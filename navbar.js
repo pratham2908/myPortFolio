@@ -48,3 +48,24 @@ function checkScrollPosition() {
         }
     })
 }
+
+//go down button
+const goDownBtn = document.querySelector('.go-down');
+goDownBtn.addEventListener('click', () => {
+    const target = document.querySelector('.projects');
+    window.scrollTo({
+        top: target.offsetTop - 50,
+        behavior: "smooth"
+    });
+}
+);
+
+
+const hamburger = document.querySelector('.hamburger');
+const navbar = document.querySelector('.navbar');
+
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('appear');
+}
+);
+

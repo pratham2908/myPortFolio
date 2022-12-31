@@ -19,6 +19,8 @@ body {
   font-family: "main-font", sans-serif;
   background-color: #eee;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -72,6 +74,11 @@ body > *:not(nav, .homePage, footer) {
       background-color: #000;
       bottom: -0.5rem;
     }
+
+    @media (max-width: 800px) {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      margin-bottom: clamp(1rem, 6vw, 3rem);
+    }
   }
 }
 
@@ -80,8 +87,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
-  width: 100%;
+  padding: 1rem clamp(1.5rem, 3vw, 4rem);
+  width: 100vw;
   background-color: #eee;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -93,52 +100,146 @@ nav {
 
   .logo {
     font-family: "name-font", cursive;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
     color: #333;
   }
 
-  .navbar ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 2rem;
-
-    li {
-      cursor: pointer;
-      text-transform: uppercase;
+  .navbar {
+    .name-navbar {
+      display: none;
     }
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
 
-    li a {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #555;
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-      transition: all 0.2s ease;
-
-      &:before {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0%;
-        height: 3px;
-        background-color: #0aaae9;
-        transition: 0.3s;
+      li {
+        cursor: pointer;
+        text-transform: uppercase;
       }
 
-      &.active {
-        color: #0aaae9;
+      li a {
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
+        font-weight: 600;
+        color: #555;
+        cursor: pointer;
+        text-decoration: none;
+        position: relative;
+        transition: all 0.2s ease;
 
         &:before {
-          width: 100%;
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background-color: #0aaae9;
+          transition: 0.3s;
+        }
+
+        &.active {
+          color: #0aaae9;
+
+          &:before {
+            width: 100%;
+          }
+        }
+
+        &:hover {
+          color: #0aaae9;
         }
       }
+    }
+  }
 
-      &:hover {
-        color: #0aaae9;
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #333;
+    z-index: 1000;
+    transition: all 0.3s ease;
+
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      color: #0aaae9;
+    }
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: calc(-1 * clamp(200px, 60vw, 400px));
+      width: clamp(200px, 60vw, 400px);
+      height: 100vh;
+      transition: all 0.4s ease-in-out;
+      background-color: #eee;
+      padding: 0 1rem;
+      padding-top: 5rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -200%;
+        width: 200%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.4;
+        z-index: -1;
+        display: none;
+      }
+
+      .name-navbar {
+        display: block;
+        font-family: "name-font", cursive;
+        font-size: clamp(2rem, 9vw, 4.5rem);
+        font-weight: 1000;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      &.appear {
+        left: 0;
+
+        &::before {
+          display: block;
+        }
+      }
+    }
+
+    .navbar ul {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+
+      li {
+        margin: clamp(0.5rem, 2vw, 1rem) 0;
+
+        a {
+          font-size: clamp(0.8rem, 3vw, 1.5rem);
+        }
       }
     }
   }
@@ -151,6 +252,37 @@ nav {
   height: 100vh;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+
+  .go-down {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #00adff;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    animation: go-down 1s ease-in-out infinite;
+
+    @keyframes go-down {
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.1;
+      }
+      50% {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+      }
+    }
+  }
 
   &-left {
     display: flex;
@@ -165,11 +297,9 @@ nav {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
 
       h1 {
-        font-size: 3.5rem;
+        font-size: clamp(1.2rem, 3.5vw, 3.5rem);
         font-weight: 700;
         color: #000;
         margin-bottom: 1rem;
@@ -188,7 +318,7 @@ nav {
 
         .name {
           font-family: "name-font";
-          font-size: 6rem;
+          font-size: clamp(2.5rem, 6vw, 6rem);
           margin: 0 5px;
         }
 
@@ -235,7 +365,7 @@ nav {
       }
 
       p {
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
         font-weight: 400;
         color: #444;
         margin-bottom: 1rem;
@@ -248,9 +378,9 @@ nav {
         margin-top: 2rem;
 
         > * {
-          width: 3rem;
-          height: 3rem;
-          margin: 0 2rem;
+          width: clamp(2rem, 4vw, 3.5rem);
+          height: clamp(2rem, 4vw, 3.5rem);
+          margin: 0 clamp(1.5rem, 2vw, 2rem);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -260,7 +390,7 @@ nav {
           cursor: pointer;
           transition: all 0.3s ease-in-out;
           text-decoration: none;
-          font-size: 2rem;
+          font-size: clamp(1rem, 2vw, 2rem);
           opacity: 0;
 
           &:nth-of-type(2):hover {
@@ -314,7 +444,7 @@ nav {
     .right-content {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       width: 100%;
       height: 100%;
@@ -331,29 +461,35 @@ nav {
       }
 
       .outer-circle {
-        width: 500px;
-        height: 500px;
+        width: clamp(300px, 35vw, 500px);
+        height: clamp(300px, 35vw, 500px);
         border-radius: 50%;
-        padding: 25px;
-        background-color: #aaa;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .middle-circle {
-          width: 450px;
-          height: 450px;
-          padding: 25px;
+          width: clamp(250px, 30vw, 450px);
+          height: clamp(250px, 30vw, 450px);
           border-radius: 50%;
-          background-color: #888;
+          background-color: #aaa;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           .inner-circle {
-            width: 400px;
-            height: 400px;
+            width: clamp(200px, 25vw, 400px);
+            height: clamp(200px, 25vw, 400px);
             border-radius: 50%;
-            padding: 25px;
             background-color: #666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             .image {
-              width: 350px;
-              height: 350px;
+              width: clamp(150px, 20vw, 350px);
+              height: clamp(150px, 20vw, 350px);
               border-radius: 50%;
               background-image: url("./person-1.jpg");
               background-size: cover;
@@ -364,14 +500,69 @@ nav {
       }
     }
   }
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+    padding-top: 4rem;
+
+    &-left {
+      width: 100%;
+      justify-content: start;
+      padding: 0 8rem;
+
+      .left-content {
+        h1 {
+          font-size: clamp(1.5rem, 4vw, 2rem);
+
+          .name {
+            font-size: clamp(2rem, 5vw, 3rem);
+          }
+        }
+
+        p {
+          font-size: clamp(0.8rem, 2vw, 1.2rem);
+        }
+      }
+    }
+
+    &-right {
+      width: 100%;
+
+      .right-content {
+        align-items: center;
+
+        .outer-circle {
+          width: clamp(275px, 40vw, 400px);
+          height: clamp(275px, 40vw, 400px);
+
+          .middle-circle {
+            width: clamp(250px, 37vw, 350px);
+            height: clamp(250px, 37vw, 350px);
+
+            .inner-circle {
+              width: clamp(225px, 34vw, 300px);
+              height: clamp(225px, 34vw, 300px);
+
+              .image {
+                width: clamp(200px, 30vw, 250px);
+                height: clamp(200px, 30vw, 250px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .projects {
   text-align: center;
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
 
   .project {
-    padding: 0rem 4rem;
+    padding: 0rem clamp(2rem, 4.5vw, 4rem);
     margin: 3rem 0;
     display: flex;
     transition: all 0.3s ease-in-out;
@@ -399,12 +590,12 @@ nav {
       margin: 0 2rem;
 
       h1 {
-        font-size: 2.5rem;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
         font-weight: 700;
       }
 
       h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 1.8vw, 1.5rem);
         margin: 10px 0px;
         color: #444;
       }
@@ -466,12 +657,52 @@ nav {
       transform: scale(1.03);
       box-shadow: 5px 10px 10px 0px rgba($color: #000000, $alpha: 0.4);
     }
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      margin: clamp(1rem, 5vw, 2.5rem) 0;
+      padding: 0 clamp(1rem, 5vw, 4rem);
+
+      &:nth-of-type(even) {
+        flex-direction: column;
+
+        .project-info {
+          text-align: left;
+        }
+      }
+
+      .project-info {
+        margin: 0 0;
+
+        h1 {
+          font-size: clamp(1.5rem, 5vw, 2.5rem);
+        }
+
+        h3 {
+          font-size: clamp(1rem, 4vw, 1.5rem);
+        }
+
+        p {
+          font-size: clamp(0.8rem, 3vw, 1.2rem);
+        }
+
+        a {
+          font-size: clamp(0.8rem, 3vw, 1.2rem);
+        }
+      }
+
+      .project-image {
+        width: 100%;
+        height: clamp(150px, 50vw, 400px);
+        aspect-ratio: 1/1;
+        margin-bottom: 2rem;
+      }
+    }
   }
 }
 
 .achievements {
   width: 100%;
-  min-height: 100vh;
   background-color: #eee;
   text-align: center;
   padding: 5rem;
@@ -543,6 +774,43 @@ nav {
       }
     }
   }
+
+  @media screen and (max-width: 800px) {
+    padding: clamp(1rem, 5vw, 2.5rem) clamp(1rem, 5vw, 3rem);
+    min-height: 0;
+
+    .achievement {
+      margin-bottom: clamp(1rem, 5vw, 2.5rem);
+
+      .achievement-info {
+        min-width: 0;
+        width: 100%;
+        h1 {
+          font-size: clamp(0.5rem, 3vw, 1.5rem);
+        }
+
+        h3 {
+          font-size: clamp(0.5rem, 2.5vw, 1.5rem);
+        }
+
+        p {
+          font-size: clamp(0.5rem, 2vw, 1.5rem);
+        }
+      }
+
+      .achievement-image-container {
+        height: clamp(70px, 12vw, 100px);
+        .achievement-image {
+          width: clamp(30px, 6vw, 50px);
+          height: clamp(30px, 6vw, 50px);
+
+          > * {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+          }
+        }
+      }
+    }
+  }
 }
 
 .about {
@@ -550,7 +818,7 @@ nav {
   min-height: 80vh;
   background-color: #eee;
   text-align: center;
-  padding: 2rem;
+  padding: clamp(1rem, 3.5vw, 2rem);
 
   .about-container {
     width: 100%;
@@ -602,6 +870,21 @@ nav {
       }
     }
   }
+
+  @media (max-width: 800px) {
+    min-height: auto;
+    .about-container {
+      flex-direction: column;
+      .about-image {
+        width: 100%;
+        height: clamp(200px, 50vw, 400px);
+      }
+
+      .about-info {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+      }
+    }
+  }
 }
 
 .contact-us {
@@ -632,7 +915,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 4rem 0;
+    margin: clamp(2rem, 8vw, 4rem) 0;
 
     > * {
       width: 3rem;
@@ -753,6 +1036,35 @@ nav {
       }
     }
   }
+
+  @media screen and (max-width: 800px) {
+    min-height: auto;
+    .social-media-links {
+      > * {
+        width: clamp(30px, 5vw, 50px);
+        height: clamp(30px, 5vw, 50px);
+        margin: 0 1rem;
+        font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+      }
+    }
+    .contact-form {
+      form {
+        gap: clamp(10px, 1.2vw, 20px);
+        font-size: 2rem;
+        input,
+        textarea {
+          width: 90%;
+          font-size: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        .submit-btn {
+          width: 80%;
+          margin-top: 1rem;
+          font-size: clamp(1rem, 4vw, 2rem);
+        }
+      }
+    }
+  }
 }
 
 footer {
@@ -762,7 +1074,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   padding: 0.5rem 0;
   font-family: sans-serif;
   border-top: 1px solid black;
