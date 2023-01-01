@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100vw;
 }
 
 @font-face {
@@ -529,7 +530,7 @@ nav {
     &-left {
       width: 100%;
       justify-content: start;
-      padding: 0 8rem;
+      padding: 0 2rem;
 
       .left-content {
         h1 {
@@ -541,7 +542,19 @@ nav {
         }
 
         p {
-          font-size: clamp(0.8rem, 2vw, 1.2rem);
+          font-size: clamp(0.5rem, 2vw, 1.2rem);
+          white-space: normal;
+        }
+
+        .social-media-links {
+          margin-top: 1rem;
+
+          > * {
+            width: clamp(1.5rem, 3vw, 2.5rem);
+            height: clamp(1.5rem, 3vw, 2.5rem);
+            margin: 0 clamp(1rem, 1.5vw, 1.5rem);
+            font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+          }
         }
       }
     }
@@ -834,10 +847,10 @@ nav {
 
 .about {
   width: 100%;
-  min-height: 80vh;
   background-color: #eee;
   text-align: center;
   padding: clamp(1rem, 3.5vw, 2rem);
+  min-height: 60vw;
 
   .about-container {
     width: 100%;
@@ -912,7 +925,6 @@ nav {
   color: white;
   padding-top: 6rem;
   width: 100%;
-  min-height: 100vh;
   text-align: center;
 
   h1::after {
