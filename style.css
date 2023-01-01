@@ -412,6 +412,20 @@ nav .hamburger.active {
 .homePage-left .left-content .social-media-links > *:nth-of-type(4):hover {
   color: #ff2300;
 }
+.homePage-left .left-content .social-media-links > * img {
+  display: none;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  transition: all 3s ease-in-out;
+}
+.homePage-left .left-content .social-media-links > *:nth-of-type(5):hover img {
+  display: block;
+  opacity: 1;
+}
+.homePage-left .left-content .social-media-links > *:nth-of-type(5):hover span {
+  display: none;
+}
 .homePage-left .left-content .social-media-links > *.appear {
   -webkit-animation: appear-link 0.3s ease-in-out forwards;
           animation: appear-link 0.3s ease-in-out forwards;
@@ -957,7 +971,7 @@ nav .hamburger.active {
 }
 .contact-us .contact-form form input:focus,
 .contact-us .contact-form form textarea:focus {
-  border-bottom: 4px solid rgb(25, 29, 245);
+  border: 2px solid green;
 }
 .contact-us .contact-form form textarea {
   height: 10rem;
