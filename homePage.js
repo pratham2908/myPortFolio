@@ -34,7 +34,6 @@ spans.forEach((span, index) => {
 //name appear effect on page load
 window.addEventListener('load', () => {
     const otherSpans = document.querySelectorAll('.left-content h1 span:not(.name)')
-    console.log(otherSpans);
     otherSpans.forEach((span, index) => {
         span.classList.add('appear');
     });
