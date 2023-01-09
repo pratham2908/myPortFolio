@@ -222,6 +222,7 @@ nav .hamburger.active {
   width: 90%;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 .homePage .go-down {
   position: absolute;
