@@ -16,7 +16,6 @@
 body {
   font-family: "main-font", sans-serif;
   background-color: #eee;
-  scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -415,8 +414,8 @@ nav .hamburger.active {
 .homePage-left .left-content .social-media-links > * img {
   display: none;
   opacity: 0;
-  width: 30px;
-  height: 30px;
+  width: clamp(1rem, 2vw, 2rem);
+  height: clamp(1rem, 2vw, 2rem);
   transition: all 3s ease-in-out;
 }
 .homePage-left .left-content .social-media-links > *:nth-of-type(5):hover img {
@@ -555,10 +554,14 @@ nav .hamburger.active {
     margin-top: 1rem;
   }
   .homePage-left .left-content .social-media-links > * {
-    width: clamp(1.5rem, 3vw, 2.5rem);
-    height: clamp(1.5rem, 3vw, 2.5rem);
+    width: clamp(1.8rem, 3vw, 2.5rem);
+    height: clamp(1.8rem, 3vw, 2.5rem);
     margin: 0 clamp(1rem, 1.5vw, 1.5rem);
-    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+  }
+  .homePage-left .left-content .social-media-links img {
+    width: clamp(0.7rem, 1.5vw, 1.5rem);
+    height: clamp(0.7rem, 1.5vw, 1.5rem);
   }
   .homePage-right {
     width: 100%;
@@ -587,6 +590,7 @@ nav .hamburger.active {
 .projects {
   text-align: center;
   padding: clamp(1rem, 3vw, 2rem);
+  overflow: hidden;
 }
 .projects .project {
   padding: 0rem clamp(2rem, 4.5vw, 4rem);
@@ -879,6 +883,7 @@ nav .hamburger.active {
   padding-top: 6rem;
   width: 100%;
   text-align: center;
+  overflow: hidden;
 }
 .contact-us h1::after {
   background-color: white !important;

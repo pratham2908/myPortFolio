@@ -50,5 +50,4 @@ lights.forEach(member => {
 }
 );
 
-console.log(window.innerWidth, window.innerHeight);
 
