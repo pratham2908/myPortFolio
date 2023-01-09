@@ -305,10 +305,14 @@ nav {
 
         span {
           display: inline-block;
+          opacity: 1;
           opacity: 0;
+          transform: translateX(70px);
+          transition: all 0.3s ease-in-out;
 
           &.appear {
-            animation: appear-name 0.5s linear forwards;
+            opacity: 1;
+            transform: translate(0);
           }
           &.rubberBand {
             animation: rubberBand 1s linear;
@@ -319,6 +323,7 @@ nav {
           font-family: "name-font";
           font-size: clamp(2.5rem, 6vw, 6rem);
           margin: 0 5px;
+          transition-delay: 300ms;
         }
 
         @keyframes rubberBand {
@@ -342,23 +347,7 @@ nav {
             transform: scale(1.05, 0.95);
           }
           100% {
-            color: #00adff;
             transform: scale(1, 1);
-          }
-        }
-
-        @keyframes appear-name {
-          0% {
-            opacity: 1;
-            transform: translateY(-500px);
-          }
-          90% {
-            opacity: 1;
-            transform: translateY(50px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
           }
         }
       }
@@ -500,14 +489,14 @@ nav {
             width: clamp(200px, 25vw, 400px);
             height: clamp(200px, 25vw, 400px);
             border-radius: 50%;
-            background-color: #666;
+            background-color: #888;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .image {
-              width: clamp(150px, 20vw, 350px);
-              height: clamp(150px, 20vw, 350px);
+              width: clamp(150px, 21vw, 350px);
+              height: clamp(150px, 21vw, 350px);
               border-radius: 50%;
               background-image: url("./person-1.jpg");
               background-size: cover;
@@ -637,7 +626,7 @@ nav {
       }
 
       p {
-        color: #777;
+        color: #888;
         margin-bottom: 1rem;
       }
 

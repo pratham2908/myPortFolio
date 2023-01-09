@@ -12,12 +12,6 @@ box.innerHTML = content;
 // home page name appear and rubberband effect
 const spans = document.querySelectorAll(".homePage-left .left-content h1 span");
 spans.forEach((span, index) => {
-    span.style.animationDelay = `${index * 0.05}s`;
-    const delayTime = 1000 + index * 50;
-    setTimeout(() => {
-        span.style.animationDelay = "0s"
-    }, delayTime);
-
     if (span.innerHTML == " ") {
         span.innerHTML = "&nbsp";
     }
@@ -39,16 +33,14 @@ spans.forEach((span, index) => {
 
 //name appear effect on page load
 window.addEventListener('load', () => {
-    spans.forEach((span) => {
+    const otherSpans = document.querySelectorAll('.left-content h1 span:not(.name)')
+    console.log(otherSpans);
+    otherSpans.forEach((span, index) => {
         span.classList.add('appear');
-        span.style.pointerEvents = "none";
+    });
 
-        setTimeout(() => {
-            span.classList.remove('appear');
-            span.style.opacity = 1;
-            span.style.pointerEvents = "auto";
-
-        }, 1500)
-
-    })
+    const name = document.querySelectorAll(".homePage-left .left-content h1 span.name");
+    name.forEach((span, index) => {
+        span.classList.add('appear');
+    });
 });
