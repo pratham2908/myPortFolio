@@ -34,6 +34,7 @@
         <div class="line"></div>
       </div>
     </nav>
+    <button class="toggle-theme"><i class="fas fa-sun"></i></button>
     <div class="homePage">
       <div class="homePage-left">
         <div class="left-content">
@@ -286,5 +287,18 @@
     <script src="homePage.js" async></script>
     <script src="script.js"></script>
     <script src="navbar.js"></script>
+    <script>
+      const toggleTheme = document.querySelector(".toggle-theme");
+
+      toggleTheme.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        document.body.classList.toggle("dark");
+        if (document.body.classList.contains("light")) {
+          toggleTheme.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+          toggleTheme.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+      });
+    </script>
   </body>
 </html>
