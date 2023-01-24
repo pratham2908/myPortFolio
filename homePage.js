@@ -42,4 +42,5 @@ window.addEventListener('load', () => {
     name.forEach((span, index) => {
         span.classList.add('appear');
     });
+
 });
