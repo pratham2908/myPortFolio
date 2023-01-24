@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  z-index: 10000000;
+}
+
 @font-face {
   font-family: "main-font";
   font-weight: 100;
@@ -349,7 +359,6 @@ nav .hamburger .line {
 }
 .homePage-left .left-content h1 span {
   display: inline-block;
-  opacity: 1;
   opacity: 0;
   transform: translateX(70px);
   transition: all 0.3s ease-in-out;
@@ -1153,4 +1162,8 @@ footer {
 .dark footer {
   background-color: #000;
   color: #fff;
+}
+
+#overlay {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
