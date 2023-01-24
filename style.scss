@@ -17,12 +17,12 @@
 @font-face {
   font-family: "main-font";
   font-weight: 100;
-  src: url(./Noto_Sans/NotoSans-ExtraBoldItalic.ttf) rel("preload");
+  src: url("./Noto_Sans/NotoSans-ExtraBoldItalic.ttf");
 }
 
 @font-face {
   font-family: "name-font";
-  src: url("./Great_Vibes/GreatVibes-Regular.ttf") rel("preload");
+  src: url("./Great_Vibes/GreatVibes-Regular.ttf");
 }
 
 body {
