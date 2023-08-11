@@ -773,12 +773,22 @@ nav {
       }
 
       a {
-        color: #000;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
 
-        &:hover {
-          color: #777;
+        em {
+          color: #00adff;
+          filter: drop-shadow(0 0 15px rgba(0, 173, 255, 0.5))
+            drop-shadow(0 0 10px rgba(0, 173, 255, 0.5))
+            drop-shadow(0 0 20px rgba(0, 173, 255, 0.5));
+          cursor: pointer;
+          transition: inherit;
+
+          &:hover {
+            color: black;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5))
+              drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+          }
         }
       }
 

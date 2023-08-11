@@ -654,12 +654,18 @@ nav .hamburger .line {
   margin-bottom: 1rem;
 }
 .projects .project .project-info a {
-  color: #000;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-.projects .project .project-info a:hover {
-  color: #777;
+.projects .project .project-info a em {
+  color: #00adff;
+  filter: drop-shadow(0 0 15px rgba(0, 173, 255, 0.5)) drop-shadow(0 0 10px rgba(0, 173, 255, 0.5)) drop-shadow(0 0 20px rgba(0, 173, 255, 0.5));
+  cursor: pointer;
+  transition: inherit;
+}
+.projects .project .project-info a em:hover {
+  color: black;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
 }
 .dark .projects .project .project-info h3 {
   color: #ddd;
