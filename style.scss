@@ -12,6 +12,7 @@
   left: 0;
   background-color: #111;
   z-index: 10000000;
+  display: none;
 }
 
 @font-face {
@@ -108,7 +109,7 @@ body {
   bottom: 20px;
   right: 20px;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #000;
   transition: all 0.2s ease-in-out;
   border-radius: 50%;
@@ -1335,8 +1336,4 @@ footer {
     background-color: #000;
     color: #fff;
   }
-}
-
-#overlay {
-  display: none;
 }
